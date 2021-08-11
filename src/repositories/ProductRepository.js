@@ -1,8 +1,17 @@
-const { Products } = require('../entities/Products');
+const Products = require('../entities/Products');
 
 class ProductRepository {
-  async createNewProduct(product) {
-    return Products.query().insert(product);
+  async createNewProduct(query) {
+    const { name, description, price, amount_left, category_id, users_id } =
+      query;
+    return Products.query().insert({
+      name,
+      description,
+      price,
+      amount_left,
+      category_id,
+      users_id,
+    });
   }
   async deleteProduct(id) {
     return Products.query().deleteById(id);
@@ -10,14 +19,23 @@ class ProductRepository {
   async getAllProducts() {
     return Products.query();
   }
-  async getProductById() {
-    return Products.query(id)
-    .findById(id)
-    .withGraphFetched('category')
-    .withGraphFetched('users');
+  async getProductById(id) {
+    return Products.query()
+      .findById(id)
+      .withGraphFetched('category')
+      .withGraphFetched('users');
   }
-  async updateProduct(id, product) {
-    return Products.query().patchAndFetchById(id, product);
+  async updateProduct(id, query) {
+    const { name, description, price, amount_left, category_id, users_id } =
+      query;
+    return Products.query().patchAndFetchById(id, {
+      name,
+      description,
+      price,
+      amount_left,
+      category_id,
+      users_id,
+    });
   }
 }
 

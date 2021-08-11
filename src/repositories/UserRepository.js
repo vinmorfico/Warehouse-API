@@ -1,9 +1,9 @@
-const { Users } = require('../entities/Users');
+const  Users  = require('../entities/Users');
 
 class UserRepository {
-  async getUser(user) {
+  async getUser(id) {
     return Users.query()
-    .findById(user.id)
+    .findById(id)
     .withGraphFetched('products');
   }
   async getAllUser() {

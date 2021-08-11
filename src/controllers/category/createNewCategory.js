@@ -1,6 +1,7 @@
 const createNewCategory = (categoryService) => {
   return async (req, res) => {
-    const category = await categoryService.createNewCategory(req);
+    console.log(req.body.name);
+    const category = await categoryService.createNewCategory(req.body.name);
     res.status(200).json(category);
   };
 };

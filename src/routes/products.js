@@ -8,7 +8,7 @@ const {
   getProductById,
   updateProduct,
 } = require('../controllers/products/index');
-const { productService } = require('../container/index');
+const productService = require('../container/Products');
 
 router.get('/', getAllProducts(productService));
 

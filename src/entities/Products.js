@@ -13,7 +13,7 @@ class Products extends Model {
         modelClass: Category,
         join: {
           from: 'products.category_id',
-          to: 'category.id',
+          to: 'products_category.id',
         },
       },
       users: {

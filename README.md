@@ -3,8 +3,7 @@
 ## Task
 
 ```
-Modify your application to lean Dependency Injection paradigm. 
-It will let you better decouple your app and mock certain modules for testing more conveniently.
+Modify your application to lean Dependency Injection paradigm. It will let you better decouple your app and mock certain modules for testing more conveniently.
 
 ```
 

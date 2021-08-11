@@ -1,8 +1,8 @@
-const getUsersById = (userService) => {
+const getUser = (userService) => {
   return async (req, res) => {
-    const users = await userService.getUsersById(req.params.id);
+    const users = await userService.getUser(req.params.id);
     res.status(200).json(users);
   };
 };
 
-module.exports = getUsersById;
+module.exports = getUser;

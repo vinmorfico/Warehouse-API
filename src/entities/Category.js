@@ -2,7 +2,7 @@ const { Model } = require('objection');
 
 class Category extends Model {
   static get tableName() {
-    return 'category';
+    return 'products_category';
   }
   static get relationMappings() {
     const Products = require('./Products');
@@ -11,7 +11,7 @@ class Category extends Model {
         relation: Model.HasManyRelation,
         modelClass: Products,
         join: {
-          from: 'category.id',
+          from: 'products_category.id',
           to: 'products.category_id',
         },
       },

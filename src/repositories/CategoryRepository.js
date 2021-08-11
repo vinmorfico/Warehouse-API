@@ -1,8 +1,10 @@
-const { Category } = require('../entities/Category');
+const Category = require('../entities/Category');
 
 class CategoryRepository {
-  async createNewCategory(category) {
-    return Category.query().insert(category);
+  async createNewCategory(query) {
+    return Category.query().insert({
+      name: query,
+    });
   }
   async deleteCategory(id) {
     return Category.query().deleteById(id);
@@ -11,13 +13,12 @@ class CategoryRepository {
     return Category.query();
   }
   async getCategoryById(id) {
-    return Сategory
-      .query()
-      .findById(id)
-      .withGraphFetched('products');
+    return Category.query().findById(id).withGraphFetched('products');
   }
-  async updateCategory() {
-    return Category.query().patchAndFetchById(id, category);
+  async updateCategory(id, query) {
+    return Category.query().patchAndFetchById(id, {
+      name: query,
+    });
   }
 }
 

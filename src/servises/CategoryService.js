@@ -1,26 +1,23 @@
-const Category = require('../entities/Category');
-
 class CategoryService {
   constructor(CategoryRepository) {
     this.categoryRepo = CategoryRepository;
   }
 
-  async createNewCategory({ Category }) {
-    // {Category} its instance of the class Category
-    return await this.categoryRepo.createNewProduct({ Category });
+  async createNewCategory(query) {
+    return await this.categoryRepo.createNewCategory(query);
   }
 
-  async deleteCategory({ Category }) {
-    return await this.categoryRepo.deleteProduct({ Category });
+  async deleteCategory(id) {
+    return await this.categoryRepo.deleteCategory(id);
   }
   async getAllCategory() {
-    return await this.categoryRepo.getAllProducts();
+    return await this.categoryRepo.getAllCategory();
   }
-  async getCategoryById({ Category }) {
-    return await this.categoryRepo.getProductById({ Category });
+  async getCategoryById(id) {
+    return await this.categoryRepo.getCategoryById(id);
   }
-  async updateCategory({ Category }) {
-    return await this.categoryRepo.updateProduct({ Category });
+  async updateCategory(id, query) {
+    return await this.categoryRepo.updateCategory(id, query);
   }
 }
 

@@ -1,3 +1,5 @@
+//const UserService = require("../../servises/UserService");
+
 const getAllUsers = (userService) => {
   return async (_req, res) => {
     const users = await userService.getAllUser();
