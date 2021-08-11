@@ -4,7 +4,6 @@ class ProductService {
   }
 
   async createNewProduct(query) {
-    console.log(query)
     return await this.productRepo.createNewProduct(query);
   }
 

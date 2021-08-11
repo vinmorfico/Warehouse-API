@@ -1,9 +1,9 @@
-const { userService } = require('./Users');
-const { productService } = require('./Products');
-const { categoryService } = require('./Category');
+// const userService = require('./Users');
+// const productService = require('./Products');
+// const categoryService = require('./Category');
 
-module.exports = {
-  userService,
-  productService,
-  categoryService,
-};
+// module.exports = {
+//   userService: userService,
+//   productService: productService,
+//   categoryService: categoryService,
+// };

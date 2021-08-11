@@ -8,9 +8,10 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-app.use('/api', routes);
-
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use('/api', routes);
 
 app.use((req, _res, next) => {
   if (req.method !== 'GET') {
