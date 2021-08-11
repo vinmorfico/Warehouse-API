@@ -5,15 +5,15 @@ class Products extends Model {
     return 'products';
   }
   static get relationMappings() {
-    const Products_category = require('./Products_category');
+    const Category = require('./Category');
     const Users = require('./Users');
     return {
-      products_category: {
+      category: {
         relation: Model.HasOneRelation,
-        modelClass: Products_category,
+        modelClass: Category,
         join: {
           from: 'products.category_id',
-          to: 'products_category.id',
+          to: 'category.id',
         },
       },
       users: {

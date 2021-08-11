@@ -3,15 +3,8 @@
 ## Task
 
 ```
-You should plug ExpressJS to your project and use it to provide some RESTful API. Use Objection ORM to make code cleaner and your development easier.
-
-Reminder:
-You should design simple API service for warehouses management.
-
-Core use cases to be implemented:
-Product CRUD
-Product category CRUD
-After plugging ORM, use supported migrations mechanism and make all further manipulations with database only via database migrations.
+Modify your application to lean Dependency Injection paradigm. 
+It will let you better decouple your app and mock certain modules for testing more conveniently.
 
 ```
 

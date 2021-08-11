@@ -1,8 +1,8 @@
 const { Model } = require('objection');
 
-class Products_category extends Model {
+class Category extends Model {
   static get tableName() {
-    return 'products_category';
+    return 'category';
   }
   static get relationMappings() {
     const Products = require('./Products');
@@ -11,7 +11,7 @@ class Products_category extends Model {
         relation: Model.HasManyRelation,
         modelClass: Products,
         join: {
-          from: 'products_category.id',
+          from: 'category.id',
           to: 'products.category_id',
         },
       },
@@ -19,4 +19,4 @@ class Products_category extends Model {
   }
 }
 
-module.exports = Products_category;
+module.exports = Category;
