@@ -1,19 +1,19 @@
 const Users = require('../entities/Users');
 
 class UserRepository {
-  async getUser(id) {
+  getUser(id) {
     return Users.query().findById(id).withGraphFetched('products');
   }
 
-  async getAllUser() {
+  getAllUser() {
     return Users.query();
   }
 
-  async getUserByLogin(login) {
+  getUserByLogin(login) {
     return Users.query().where('login', login);
   }
 
-  async createNewUser(name, login, password, refreshToken) {
+  createNewUser(name, login, password, refreshToken) {
     return Users.query().insert({
       name,
       login,
@@ -21,17 +21,17 @@ class UserRepository {
       refreshToken,
     });
   }
-  async updateToken(login, refreshToken) {
+  updateToken(login, refreshToken) {
     return Users.query()
       .patch({ refreshToken: refreshToken })
       .where('login', login);
   }
-  async findToken(refreshToken) {
+  findToken(refreshToken) {
     return Users.query()
       .select('refreshToken')
       .where('refreshToken', refreshToken);
   }
-  async getUserByRefreshToken(refreshToken) {
+  getUserByRefreshToken(refreshToken) {
     return Users.query().where('refreshToken', refreshToken);
   }
 }

@@ -1,26 +1,25 @@
 const Category = require('../entities/Category');
 
 class CategoryRepository {
-
-  async createNewCategory(query) {
+  createNewCategory(query) {
     return Category.query().insert({
       name: query,
     });
   }
 
-  async deleteCategory(id) {
+  deleteCategory(id) {
     return Category.query().deleteById(id);
   }
 
-  async getAllCategory() {
+  getAllCategory() {
     return Category.query();
   }
 
-  async getCategoryById(id) {
+  getCategoryById(id) {
     return Category.query().findById(id).withGraphFetched('products');
   }
-  
-  async updateCategory(id, query) {
+
+  updateCategory(id, query) {
     return Category.query().patchAndFetchById(id, {
       name: query,
     });

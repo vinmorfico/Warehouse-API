@@ -3,8 +3,10 @@ require('express-async-errors');
 const userController = require('../container/Users');
 const router = Router();
 
-router.get('/', userController.getAllUsers);
+router.post('/login', userController.login);
 
-router.get('/:id', userController.getUser);
+router.post('/refresh', userController.refreshToken);
+
+router.post('/register', userController.registerNewUser);
 
 module.exports = router;

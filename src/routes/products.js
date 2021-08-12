@@ -1,23 +1,16 @@
 const { Router } = require('express');
-const router = Router();
 require('express-async-errors');
-const {
-  createNewProduct,
-  deleteProduct,
-  getAllProducts,
-  getProductById,
-  updateProduct,
-} = require('../controllers/products/index');
-const productService = require('../container/Products');
+const productController = require('../container/Products');
+const router = Router();
 
-router.get('/', getAllProducts(productService));
+router.get('/', productController.getAllProducts);
 
-router.get('/:id', getProductById(productService));
+router.get('/:id', productController.getProductById);
 
-router.post('/', createNewProduct(productService));
+router.post('/', productController.createNewProduct);
 
-router.put('/:id', updateProduct(productService));
+router.put('/:id', productController.updateProduct);
 
-router.delete('/:id', deleteProduct(productService));
+router.delete('/:id', productController.deleteProduct);
 
 module.exports = router;

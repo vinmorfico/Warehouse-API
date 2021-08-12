@@ -1,24 +1,17 @@
 const { Router } = require('express');
 require('express-async-errors');
-const {
-  getAllCategory,
-  getCategoryById,
-  createNewCategory,
-  updateCategory,
-  deleteCategory,
-} = require('../controllers/category/index');
-const categoryService = require('../container/Category');
+const categoryController = require('../container/Category');
 
 const router = Router();
 
-router.get('/', getAllCategory(categoryService));
+router.get('/', categoryController.getAllCategory);
 
-router.get('/:id', getCategoryById(categoryService));
+router.get('/:id', categoryController.getCategoryById);
 
-router.post('/', createNewCategory(categoryService));
+router.post('/', categoryController.createNewCategory);
 
-router.put('/:id', updateCategory(categoryService));
+router.put('/:id', categoryController.updateCategory);
 
-router.delete('/:id', deleteCategory(categoryService));
+router.delete('/:id', categoryController.deleteCategory);
 
 module.exports = router;
