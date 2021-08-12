@@ -10,7 +10,6 @@ const login = (userService) => {
     }
     const user = await userService.getUserByLogin(login);
     if (user && (await bcrypt.compare(password, user[0].password))) {
-      console.log(2);
 
       const token = 
        jwt.sign({ login: login }, process.env.TOKEN_KEY, {
