@@ -3,24 +3,29 @@ class UserService {
     this.userRepo = UserRepository;
   }
 
-  async getUser(id) {
-    return await this.userRepo.getUser(id);
+  getUser(id) {
+    return this.userRepo.getUser(id);
   }
 
-  async getAllUser() {
-    return await this.userRepo.getAllUser();
+  getAllUser() {
+    return this.userRepo.getAllUser();
   }
 
-  async getUserByLogin(login) {
-    return await this.userRepo.getUserByLogin(login);
+  getUserByLogin(login) {
+    return this.userRepo.getUserByLogin(login);
   }
-  async createNewUser(name, login, password, token) {
-    return await this.userRepo.createNewUser(name, login, password, token);
+  createNewUser(name, login, password, refreshToken) {
+    return this.userRepo.createNewUser(name, login, password, refreshToken);
   }
-  async updateToken(login, token) {
-    return await this.userRepo.updateToken(login, token);
+  updateToken(login, refreshToken) {
+    return this.userRepo.updateToken(login, refreshToken);
   }
-  
+  findToken(refreshToken) {
+    return this.userRepo.findToken(refreshToken);
+  }
+  getUserByRefreshToken(refreshToken) {
+    return this.userRepo.getUserByRefreshToken(refreshToken);
+  }
 }
 
 module.exports = UserService;

@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { v4: uuidv4 } = require('uuid');
 require('dotenv').config();
 
 const registerNewUser = (userService) => {
@@ -20,14 +21,19 @@ const registerNewUser = (userService) => {
       return res.status(409).send('User Already Exist. Please Login');
     }
     const encryptedPassword = await bcrypt.hash(password, 10);
-
-    const token = jwt.sign({ name: name }, process.env.TOKEN_KEY, {
-      expiresIn: '2h',
+    const refreshToken = uuidv4();
+    const token = jwt.sign({ login: login }, process.env.TOKEN_KEY, {
+      expiresIn: '5m',
     });
 
-    const user = await userService.createNewUser(name, login, encryptedPassword, token);
+    const user = await userService.createNewUser(
+      name,
+      login,
+      encryptedPassword,
+      refreshToken
+    );
 
-    res.status(201).json(user);
+    res.status(201).json({ user, token: token });
   };
 };
 

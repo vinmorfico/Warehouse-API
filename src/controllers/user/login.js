@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { v4: uuidv4 } = require('uuid');
 require('dotenv').config();
 
 const login = (userService) => {
@@ -10,16 +11,17 @@ const login = (userService) => {
     }
     const user = await userService.getUserByLogin(login);
     if (user && (await bcrypt.compare(password, user[0].password))) {
-
-      const token = 
-       jwt.sign({ login: login }, process.env.TOKEN_KEY, {
-        expiresIn: '2h',
+      const refreshToken = uuidv4();
+      const token = jwt.sign({ login: login }, process.env.TOKEN_KEY, {
+        expiresIn: '5m',
       });
-      user[0].token = token;
+      user[0].refreshToken = refreshToken;
+      await userService.updateToken(login, refreshToken);
 
-      await userService.updateToken(login, token);
-
-      res.status(200).json(user);
+      res.status(200).json({
+        token: token,
+        refreshToken: refreshToken,
+      });
     }
     res.status(400).send('Invalid Credentials');
   };

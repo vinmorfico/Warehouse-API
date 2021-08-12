@@ -12,7 +12,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', routes);
-
 app.use((req, _res, next) => {
   if (req.method !== 'GET') {
     next(createHttpError(405));
@@ -21,7 +20,6 @@ app.use((req, _res, next) => {
 
   next(createHttpError(404));
 });
-
 app.use(errorHandlerMiddleware);
 
 async function start() {

@@ -3,21 +3,21 @@ class CategoryService {
     this.categoryRepo = CategoryRepository;
   }
 
-  async createNewCategory(query) {
-    return await this.categoryRepo.createNewCategory(query);
+  createNewCategory(query) {
+    return this.categoryRepo.createNewCategory(query);
   }
 
-  async deleteCategory(id) {
-    return await this.categoryRepo.deleteCategory(id);
+  deleteCategory(id) {
+    return this.categoryRepo.deleteCategory(id);
   }
-  async getAllCategory() {
-    return await this.categoryRepo.getAllCategory();
+  getAllCategory() {
+    return this.categoryRepo.getAllCategory();
   }
-  async getCategoryById(id) {
-    return await this.categoryRepo.getCategoryById(id);
+  getCategoryById(id) {
+    return this.categoryRepo.getCategoryById(id);
   }
-  async updateCategory(id, query) {
-    return await this.categoryRepo.updateCategory(id, query);
+  updateCategory(id, query) {
+    return this.categoryRepo.updateCategory(id, query);
   }
 }
 

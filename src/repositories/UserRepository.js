@@ -13,16 +13,26 @@ class UserRepository {
     return Users.query().where('login', login);
   }
 
-  async createNewUser(name, login, password, token) {
+  async createNewUser(name, login, password, refreshToken) {
     return Users.query().insert({
       name,
       login,
       password,
-      token,
+      refreshToken,
     });
   }
-  async updateToken(login, token) {
-    return Users.query().patch({ token: token }).where('login', login);
+  async updateToken(login, refreshToken) {
+    return Users.query()
+      .patch({ refreshToken: refreshToken })
+      .where('login', login);
+  }
+  async findToken(refreshToken) {
+    return Users.query()
+      .select('refreshToken')
+      .where('refreshToken', refreshToken);
+  }
+  async getUserByRefreshToken(refreshToken) {
+    return Users.query().where('refreshToken', refreshToken);
   }
 }
 

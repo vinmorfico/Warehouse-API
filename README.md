@@ -3,8 +3,11 @@
 ## Task
 
 ```
-Modify your application to lean Dependency Injection paradigm. It will let you better decouple your app and mock certain modules for testing more conveniently.
+You should add some functionality to your project and cover part of existing functionality with access checks to prevent unauthorized access on sensitive API routes.
 
+Core use cases to be implemented:
+User auth (login and obtain pair of JWT token and refresh token)
+Obtain new JWT token providing refresh token
 ```
 
 ## Database Istallation

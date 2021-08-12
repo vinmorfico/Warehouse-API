@@ -6,5 +6,6 @@ routes.use('/products', auth, require('./products'));
 routes.use('/category', auth, require('./category'));
 routes.use('/register', require('./register'));
 routes.use('/login', require('./login'));
+routes.use('/refresh', require('./refresh'));
 
 module.exports = routes;

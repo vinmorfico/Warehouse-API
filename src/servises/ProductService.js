@@ -3,21 +3,21 @@ class ProductService {
     this.productRepo = ProductRepository;
   }
 
-  async createNewProduct(query) {
-    return await this.productRepo.createNewProduct(query);
+  createNewProduct(query) {
+    return this.productRepo.createNewProduct(query);
   }
 
-  async deleteProduct(id) {
-    return await this.productRepo.deleteProduct(id);
+  deleteProduct(id) {
+    return this.productRepo.deleteProduct(id);
   }
-  async getAllProducts() {
-    return await this.productRepo.getAllProducts();
+  getAllProducts() {
+    return this.productRepo.getAllProducts();
   }
-  async getProductById(id) {
-    return await this.productRepo.getProductById(id);
+  getProductById(id) {
+    return this.productRepo.getProductById(id);
   }
-  async updateProduct(id, query) {
-    return await this.productRepo.updateProduct(id, query);
+  updateProduct(id, query) {
+    return this.productRepo.updateProduct(id, query);
   }
 }
 
