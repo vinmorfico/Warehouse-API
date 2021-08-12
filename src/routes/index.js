@@ -1,7 +1,10 @@
+const auth = require('../middlewares/auth');
 const routes = require('express').Router();
 
-routes.use('/users', require('./users'));
-routes.use('/products', require('./products'));
-routes.use('/category', require('./category'));
+routes.use('/users', auth, require('./users'));
+routes.use('/products', auth, require('./products'));
+routes.use('/category', auth, require('./category'));
+routes.use('/register', require('./register'));
+routes.use('/login', require('./login'));
 
 module.exports = routes;

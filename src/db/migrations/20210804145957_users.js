@@ -4,6 +4,7 @@ exports.up = function (knex) {
     u.string('name').notNull();
     u.string('login').notNull();
     u.string('password').notNull();
+    u.string('token');
   });
 };
 
