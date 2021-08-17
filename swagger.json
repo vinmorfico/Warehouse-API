@@ -1,0 +1,644 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Warehouse API",
+    "description": "Project for product management",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:8000",
+  "basePath": "/api",
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "description": "Login user in system",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Credential",
+            "schema": {
+              "$ref": "#/definitions/loginUser"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Token",
+            "schema": {
+              "$ref": "#/definitions/createNewToken"
+            }
+          }
+        }
+      }
+    },
+    "/auth/refresh": {
+      "post": {
+        "tags": ["Auth"],
+        "description": "Create new token",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "refreshToken",
+            "schema": {
+              "$ref": "#/definitions/refreshToken"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Token",
+            "schema": {
+              "$ref": "#/definitions/createNewToken"
+            }
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": ["Auth"],
+        "description": "Create new user in system",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/createUser"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "New user is created",
+            "schema": {
+              "$ref": "#/definitions/newUser"
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "parameters": [
+        {
+          "name": "x-access-token",
+          "in": "head",
+          "required": true,
+          "description": "token",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get all users in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      }
+    },
+    "/users/:id": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of user that we want to find",
+          "type": "integer"
+        },
+        {
+          "name": "x-access-token",
+          "in": "head",
+          "required": true,
+          "description": "token",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get user by id in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/products": {
+      "parameters": [
+        {
+          "name": "x-access-token",
+          "in": "head",
+          "required": true,
+          "description": "token",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Products"],
+        "summary": "Get all products in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Products"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Products"],
+        "description": "Create new product in system",
+        "parameters": [
+          {
+            "name": "product",
+            "in": "body",
+            "description": "Product that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Product1"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "New product is created",
+            "schema": {
+              "$ref": "#/definitions/Product1"
+            }
+          }
+        }
+      }
+    },
+    "/products/:id": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of product that we want to find",
+          "type": "integer"
+        },
+        {
+          "name": "x-access-token",
+          "in": "head",
+          "required": true,
+          "description": "token",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Products"],
+        "summary": "Get products by id in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update products with give ID",
+        "tags": ["Products"],
+        "parameters": [
+          {
+            "name": "product",
+            "in": "body",
+            "description": "Product with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/updateProduct"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product is updated",
+            "schema": {
+              "$ref": "#/definitions/Product1"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete product with given ID",
+        "tags": ["Products"],
+        "responses": {
+          "200": {
+            "description": "Product is deleted",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/category": {
+      "parameters": [
+        {
+          "name": "x-access-token",
+          "in": "head",
+          "required": true,
+          "description": "token",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Category"],
+        "summary": "Get all products in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Category"],
+        "description": "Create new user in system",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "body",
+            "description": "Category that we want to create",
+            "schema": {
+              "$ref": "#/definitions/category1"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "New сategory is created",
+            "schema": {
+              "$ref": "#/definitions/category1"
+            }
+          }
+        }
+      }
+    },
+    "/category/:id": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of category that we want to find",
+          "type": "integer"
+        },
+        {
+          "name": "x-access-token",
+          "in": "head",
+          "required": true,
+          "description": "token",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Category"],
+        "summary": "Get products by id in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/category"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update category with give ID",
+        "tags": ["Category"],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "body",
+            "description": "Category with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/updateCategory"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Category is updated",
+            "schema": {
+              "$ref": "#/definitions/category1"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Category user with given ID",
+        "tags": ["Category"],
+        "responses": {
+          "200": {
+            "description": "Category is deleted",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "required": ["id", "name", "login", "password"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "login": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        },
+        "products": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/Product1"
+          }
+        }
+      }
+    },
+    "User1": {
+      "required": ["id", "name", "login", "password"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "login": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "loginUser": {
+      "required": ["login", "password"],
+      "properties": {
+        "login": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "createNewToken": {
+      "required": ["token", "refreshToken"],
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "refreshToken": {
+      "required": ["refreshToken"],
+      "properties": {
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "createUser": {
+      "required": ["name", "login", "password"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "login": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "newUser": {
+      "required": ["name", "login", "password"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "login": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "Users": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/User1"
+      }
+    },
+    "Product1": {
+      "required": ["id", "name", "description", "price", "amount_left"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "text"
+        },
+        "price": {
+          "type": "numeric(8,2)"
+        },
+        "amount_left": {
+          "type": "integer"
+        },
+        "category_id": {
+          "type": "integer"
+        },
+        "users_id": {
+          "type": "integer"
+        }
+      }
+    },
+    "updateProduct": {
+      "required": ["name", "description", "price", "amount_left"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "text"
+        },
+        "price": {
+          "type": "numeric(8,2)"
+        },
+        "amount_left": {
+          "type": "integer"
+        },
+        "category_id": {
+          "type": "integer"
+        },
+        "users_id": {
+          "type": "integer"
+        }
+      }
+    },
+    "Product": {
+      "required": ["id", "name", "description", "price", "amount_left"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "text"
+        },
+        "price": {
+          "type": "numeric(8,2)"
+        },
+        "amount_left": {
+          "type": "integer"
+        },
+        "category_id": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/category1"
+          }
+        },
+        "users_id": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/User1"
+          }
+        }
+      }
+    },
+    "Products": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/Product1"
+      }
+    },
+    "category": {
+      "required": ["id", "name"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "products": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/Product1"
+          }
+        }
+      }
+    },
+    "category1": {
+      "required": ["id", "name"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "updateCategory": {
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Category": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/category1"
+      }
+    }
+  }
+}

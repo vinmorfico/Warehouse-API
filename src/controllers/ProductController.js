@@ -5,7 +5,7 @@ class ProductController {
 
   createNewProduct = async (req, res) => {
     const product = await this.productService.createNewProduct(req.body);
-    res.status(200).json(product);
+    res.status(201).json(product);
   };
 
   deleteProduct = async (req, res) => {

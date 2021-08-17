@@ -27,7 +27,7 @@ class UserController {
     if (user && (await bcrypt.compare(password, user[0].password))) {
       const refreshToken = uuidv4();
       const token = jwt.sign({ login: login }, process.env.TOKEN_KEY, {
-        expiresIn: '5m',
+        expiresIn: '55m',
       });
       user[0].refreshToken = refreshToken;
       await this.userService.updateToken(login, refreshToken);
@@ -94,8 +94,9 @@ class UserController {
       encryptedPassword,
       refreshToken
     );
+    const { id } = user;
 
-    res.status(201).json({ user, token: token });
+    res.status(201).json({ id, name, login, encryptedPassword, refreshToken, token });
   };
 }
 

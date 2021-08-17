@@ -5,7 +5,7 @@ class CategoryController {
 
   createNewCategory = async (req, res) => {
     const category = await this.categoryService.createNewCategory(req.body.name);
-    res.status(200).json(category);
+    res.status(201).json(category);
   };
 
   deleteCategory = async (req, res) => {
