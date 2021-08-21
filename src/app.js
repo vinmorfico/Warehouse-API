@@ -1,4 +1,8 @@
 const express = require('express');
+const app = express();
+//const server = require('http').createServer(app);
+//const { Server } = require("socket.io");
+//const io = new Server(server);
 const setupDb = require('./db/knex');
 const createHttpError = require('http-errors');
 const errorHandlerMiddleware = require('./middlewares/error.middleware');
@@ -8,7 +12,6 @@ const swaggerUi = require('swagger-ui-express'),
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
-const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -24,6 +27,10 @@ app.use((req, _res, next) => {
   next(createHttpError(404));
 });
 app.use(errorHandlerMiddleware);
+
+// io.on('connection', (socket) => {
+//   console.log('a user connected');
+// });
 
 async function start() {
   try {

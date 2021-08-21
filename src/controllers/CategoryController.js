@@ -4,7 +4,9 @@ class CategoryController {
   }
 
   createNewCategory = async (req, res) => {
-    const category = await this.categoryService.createNewCategory(req.body.name);
+    const category = await this.categoryService.createNewCategory(
+      req.body.name
+    );
     res.status(201).json(category);
   };
 
@@ -14,7 +16,6 @@ class CategoryController {
   };
 
   getAllCategory = async (_req, res) => {
-    console.log(this)
     const category = await this.categoryService.getAllCategory();
     res.status(200).json(category);
   };
