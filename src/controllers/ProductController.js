@@ -3,14 +3,18 @@ class ProductController {
     this.productService = ProductService;
   }
 
-  createNewProduct = async (req, res) => {
+  createNewProduct = async (req, res, next) => {
     const product = await this.productService.createNewProduct(req.body);
+    req.product = product;
     res.status(201).json(product);
+    next();
   };
 
-  deleteProduct = async (req, res) => {
+  deleteProduct = async (req, res, next) => {
     await this.productService.deleteProduct(req.params.id);
+    req.idForMiddleware = req.params.id;
     res.status(200).json({ status: 'deleted' });
+    next();
   };
 
   getAllProducts = async (_req, res) => {
@@ -23,9 +27,11 @@ class ProductController {
     res.status(200).json(product);
   };
 
-  updateProduct = async (req, res) => {
+  updateProduct = async (req, res, next) => {
     const product = await this.productService.updateProduct(req.params.id, req.body);
+    req.idForMiddleware = req.params.id;
     res.status(200).json(product);
+    next();
   };
 }
 

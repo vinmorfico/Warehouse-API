@@ -1,0 +1,3 @@
+New product has been created {"name":"android","description":"very bad telephone","price":"499","amount_left":"239","category_id":"3","users_id":"1","id":14}
+product with ID 14 has been deleted
+product with ID 12 has been deleted

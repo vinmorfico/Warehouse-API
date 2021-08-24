@@ -1,41 +1,34 @@
 const express = require('express');
 const app = express();
-//const server = require('http').createServer(app);
-//const { Server } = require("socket.io");
-//const io = new Server(server);
+const server = require('http').Server(app);
+const io = require('./io');
+const path = require('path');
 const setupDb = require('./db/knex');
-const createHttpError = require('http-errors');
-const errorHandlerMiddleware = require('./middlewares/error.middleware');
+const {
+  errorHandlerMiddleware,
+  newError,
+} = require('./middlewares/error.middleware');
 const routes = require('./routes/index');
 const swaggerUi = require('swagger-ui-express'),
   swaggerDocument = require('../swagger.json');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
+const PATH_PUBLIC = path.join(__dirname, '/public');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.static(PATH_PUBLIC));
 app.use('/api', routes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.use((req, _res, next) => {
-  if (req.method !== 'GET') {
-    next(createHttpError(405));
-    return;
-  }
-
-  next(createHttpError(404));
-});
+app.use(newError);
 app.use(errorHandlerMiddleware);
-
-// io.on('connection', (socket) => {
-//   console.log('a user connected');
-// });
 
 async function start() {
   try {
     await setupDb();
-    app.listen(PORT, () =>
+    io.attach(server);
+    server.listen(PORT, () =>
       console.log(`Server is listening at http://localhost:${PORT}`)
     );
   } catch (err) {

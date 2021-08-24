@@ -263,7 +263,7 @@
         }
       },
       "put": {
-        "summary": "Update products with give ID",
+        "summary": "Update product with given ID",
         "security": [
           {
             "JWTAuth": []
@@ -408,7 +408,7 @@
         }
       },
       "put": {
-        "summary": "Update category with give ID",
+        "summary": "Update category with given ID",
         "security": [
           {
             "JWTAuth": []
