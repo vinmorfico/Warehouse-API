@@ -1,16 +1,17 @@
 const { Router } = require('express');
-require('express-async-errors');
 const productController = require('../container/Products');
+const { productsPOST, productsPUT, paramID } = require('../middlewares/shemas');
+const validation = require('../middlewares/validation');
 const router = Router();
 
 router.get('/', productController.getAllProducts);
 
-router.get('/:id', productController.getProductById);
+router.get('/:id', validation(paramID, 'params'), productController.getProductById);
 
-router.post('/', productController.createNewProduct);
+router.post('/', validation(productsPOST, 'body'), productController.createNewProduct);
 
-router.put('/:id', productController.updateProduct);
+router.put('/:id', validation(paramID, 'params'), validation(productsPUT, 'body'), productController.updateProduct);
 
-router.delete('/:id', productController.deleteProduct);
+router.delete('/:id', validation(paramID, 'params'), productController.deleteProduct);
 
 module.exports = router;

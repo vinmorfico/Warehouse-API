@@ -11,6 +11,7 @@ const {
 const routes = require('./routes/index');
 const swaggerUi = require('swagger-ui-express'),
   swaggerDocument = require('../swagger.json');
+require('express-async-errors');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
@@ -18,8 +19,8 @@ const PATH_PUBLIC = path.join(__dirname, '/public');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(PATH_PUBLIC));
 app.use('/api', routes);
+app.use('/api-info', express.static(PATH_PUBLIC));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(newError);
 app.use(errorHandlerMiddleware);

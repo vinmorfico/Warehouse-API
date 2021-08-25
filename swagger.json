@@ -212,7 +212,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/shemas/Product1"
+                "$ref": "#/components/shemas/updateProduct"
               }
             }
           }
@@ -356,7 +356,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/shemas/category1"
+                "$ref": "#/components/shemas/updateCategory"
               }
             }
           }
