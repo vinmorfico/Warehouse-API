@@ -1,28 +1,42 @@
-const Category = require('../entities/Category');
+const Category = require('../models/Category');
 
 class CategoryRepository {
   createNewCategory(query) {
-    return Category.query().insert({
-      name: query,
+    const category = new Category({
+      name: query.name,
+      products: query.products,
     });
+    category.save();
+    const newCategory = { id: category._id, name: category.name };
+    return newCategory;
   }
 
   deleteCategory(id) {
-    return Category.query().deleteById(id);
+    return Category.deleteOne({ _id: id }).lean();
   }
 
   getAllCategory() {
-    return Category.query();
+    return Category.find({}).select('name').lean();
   }
 
   getCategoryById(id) {
-    return Category.query().findById(id).withGraphFetched('products');
+    return Category.findOne({ _id: id })
+      .select('name')
+      .populate({
+        path: 'products',
+        select: 'name description price amount_left category_id users_id',
+      })
+      .lean();
   }
 
   updateCategory(id, query) {
-    return Category.query().patchAndFetchById(id, {
-      name: query,
-    });
+    return Category.findOneAndUpdate(
+      { _id: id },
+      { name: query.name },
+      { new: true }
+    )
+      .select('name')
+      .lean();
   }
 }
 

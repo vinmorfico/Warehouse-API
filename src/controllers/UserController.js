@@ -42,28 +42,28 @@ class UserController {
 
   refreshToken = async (req, res) => {
     const { refreshToken } = req.body;
-    const dbToken = await this.userService.findToken(refreshToken);
+    const user = await this.userService.getUserByRefreshToken(refreshToken);
     const isEmpty = function (obj) {
       for (let _key in obj) {
         return false;
       }
       return true;
     };
-    if (isEmpty(dbToken)) {
+    if (isEmpty(user)) {
       res.status(400).send('Invalid Token');
-    }
-    const user = await this.userService.getUserByRefreshToken(refreshToken);
-    const newRefreshToken = uuidv4();
-    const token = jwt.sign({ login: user[0].login }, process.env.TOKEN_KEY, {
-      expiresIn: '5m',
-    });
-    user[0].refreshToken = newRefreshToken;
-    await this.userService.updateToken(user[0].login, user[0].refreshToken);
+    } else {
+      const newRefreshToken = uuidv4();
+      const token = jwt.sign({ login: user.login }, process.env.TOKEN_KEY, {
+        expiresIn: '5m',
+      });
+      user.refreshToken = newRefreshToken;
+      await this.userService.updateToken(user.login, user.refreshToken);
 
-    res.status(200).json({
-      token: token,
-      refreshToken: newRefreshToken,
-    });
+      res.status(200).json({
+        token: token,
+        refreshToken: newRefreshToken,
+      });
+    }
   };
 
   registerNewUser = async (req, res) => {
@@ -96,7 +96,9 @@ class UserController {
     );
     const { id } = user;
 
-    res.status(201).json({ id, name, login, encryptedPassword, refreshToken, token });
+    res
+      .status(201)
+      .json({ id, name, login, password: encryptedPassword, refreshToken, token });
   };
 }
 

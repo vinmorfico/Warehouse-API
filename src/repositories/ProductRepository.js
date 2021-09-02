@@ -1,10 +1,10 @@
-const Products = require('../entities/Products');
+const Products = require('../models/Products');
 
 class ProductRepository {
   createNewProduct(query) {
     const { name, description, price, amount_left, category_id, users_id } =
       query;
-    return Products.query().insert({
+    const product = new Products({
       name,
       description,
       price,
@@ -12,34 +12,45 @@ class ProductRepository {
       category_id,
       users_id,
     });
+    product.save();
+    const newProduct = {
+      id: product._id,
+      name: product.name,
+      description: product.description,
+      price: product.price,
+      amount_left: product.amount_left,
+      category_id: product.category_id,
+      users_id: product.users_id,
+    };
+    return newProduct;
   }
 
   deleteProduct(id) {
-    return Products.query().deleteById(id);
+    return Products.deleteOne({ _id: id }).lean();
   }
 
   getAllProducts() {
-    return Products.query();
+    return Products.find({}).select('name description price amount_left category_id users_id').lean();
   }
 
   getProductById(id) {
-    return Products.query()
-      .findById(id)
-      .withGraphFetched('category')
-      .withGraphFetched('users');
+    return Products.findOne({ _id: id })
+      .select('name description price amount_left category_id users_id')
+      .populate({ path: 'category', select: 'name' })
+      .populate({ path: 'user', select: 'name login password refreshToken' })
+      .lean();
   }
 
   updateProduct(id, query) {
     const { name, description, price, amount_left, category_id, users_id } =
       query;
-    return Products.query().patchAndFetchById(id, {
-      name,
-      description,
-      price,
-      amount_left,
-      category_id,
-      users_id,
-    });
+    return Products.findOneAndUpdate(
+      { _id: id },
+      { name, description, price, amount_left, category_id, users_id },
+      { new: true }
+    )
+      .select('name description price amount_left category_id users_id')
+      .lean();
   }
 }
 

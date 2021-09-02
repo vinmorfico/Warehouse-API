@@ -3,7 +3,7 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('./io');
 const path = require('path');
-const setupDb = require('./db/knex');
+const initDb = require('./db/index');
 const {
   errorHandlerMiddleware,
   newError,
@@ -27,7 +27,7 @@ app.use(errorHandlerMiddleware);
 
 async function start() {
   try {
-    await setupDb();
+    await initDb();
     io.attach(server);
     server.listen(PORT, () =>
       console.log(`Server is listening at http://localhost:${PORT}`)

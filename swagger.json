@@ -324,7 +324,7 @@
     "/category": {
       "get": {
         "tags": ["Category"],
-        "summary": "Get all products in system",
+        "summary": "Get all categories in system",
         "security": [
           {
             "JWTAuth": []
@@ -345,7 +345,7 @@
       },
       "post": {
         "tags": ["Category"],
-        "summary": "Create new user in system",
+        "summary": "Create new category in system",
         "security": [
           {
             "JWTAuth": []
@@ -388,7 +388,7 @@
       ],
       "get": {
         "tags": ["Category"],
-        "summary": "Get products by id in system",
+        "summary": "Get category by id in system",
         "security": [
           {
             "JWTAuth": []
@@ -435,7 +435,7 @@
         }
       },
       "delete": {
-        "summary": "Category user with given ID",
+        "summary": "Delete category with given ID",
         "security": [
           {
             "JWTAuth": []
@@ -468,7 +468,7 @@
         "required": ["id", "name", "login", "password"],
         "properties": {
           "id": {
-            "type": "integer",
+            "type": "string",
             "uniqueItems": true
           },
           "name": {
@@ -496,7 +496,7 @@
         "required": ["id", "name", "login", "password"],
         "properties": {
           "id": {
-            "type": "integer",
+            "type": "string",
             "uniqueItems": true
           },
           "name": {
@@ -561,7 +561,7 @@
         "required": ["name", "login", "password", "refreshToken", "token"],
         "properties": {
           "id": {
-            "type": "integer",
+            "type": "string",
             "uniqueItems": true
           },
           "name": {
@@ -592,7 +592,7 @@
         "required": ["id", "name", "description", "price", "amount_left"],
         "properties": {
           "id": {
-            "type": "integer",
+            "type": "string",
             "uniqueItems": true
           },
           "name": {
@@ -609,10 +609,10 @@
             "type": "integer"
           },
           "category_id": {
-            "type": "integer"
+            "type": "string"
           },
           "users_id": {
-            "type": "integer"
+            "type": "string"
           }
         }
       },
@@ -632,10 +632,10 @@
             "type": "integer"
           },
           "category_id": {
-            "type": "integer"
+            "type": "string"
           },
           "users_id": {
-            "type": "integer"
+            "type": "string"
           }
         }
       },
@@ -643,7 +643,7 @@
         "required": ["id", "name", "description", "price", "amount_left"],
         "properties": {
           "id": {
-            "type": "integer",
+            "type": "string",
             "uniqueItems": true
           },
           "name": {
@@ -686,7 +686,7 @@
         "required": ["id", "name"],
         "properties": {
           "id": {
-            "type": "integer",
+            "type": "string",
             "uniqueItems": true
           },
           "name": {
@@ -705,7 +705,7 @@
         "required": ["id", "name"],
         "properties": {
           "id": {
-            "type": "integer",
+            "type": "string",
             "uniqueItems": true
           },
           "name": {

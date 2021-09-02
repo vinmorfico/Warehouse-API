@@ -5,7 +5,7 @@ class CategoryController {
 
   createNewCategory = async (req, res) => {
     const category = await this.categoryService.createNewCategory(
-      req.body.name
+      req.body
     );
     res.status(201).json(category);
   };
@@ -28,7 +28,7 @@ class CategoryController {
   updateCategory = async (req, res) => {
     const category = await this.categoryService.updateCategory(
       req.params.id,
-      req.body.name
+      req.body
     );
     res.status(200).json(category);
   };

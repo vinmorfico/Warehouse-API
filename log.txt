@@ -6,3 +6,19 @@ Product with ID 4 has been deleted
 Product with ID 2 has been deleted
 New Product has been created {"name":"string","description":"string","price":0,"amount_left":0,"category_id":1,"users_id":1,"id":13}
 New Product has been created {"name":"string","description":"string","price":0,"amount_left":0,"category_id":1,"users_id":1,"id":14}
+Product with ID 612ac1072d2de6d177c5bbfe has been deleted
+New Product has been created {"name":"android","description":"very bad telephone","price":499,"amount_left":239,"category_id":3,"users_id":1,"_id":"612acfc9766c7422aa95f813","__v":0}
+
+Product with ID 612acfc9766c7422aa95f813 has been changed {"name":"iphone"}
+Product with ID 612acfc9766c7422aa95f813 has been deleted
+New Product has been created {"name":"apple","description":"very tasty","price":5.99,"amount_left":56,"category_id":3,"users_id":2,"_id":"612ad22fab2baeb6f7e7551d","__v":0}
+Product with ID 612ad22fab2baeb6f7e7551d has been changed {"name":"string","description":"string","price":0,"amount_left":0,"category_id":"612ad1d4ab2baeb6f7e7551b","users_id":"612ad3790c7ddc6d159d0704"}
+New Product has been created {"name":"iphone","description":"very cool phone","price":999,"amount_left":123,"category_id":"612ce26051ef30744a005633","users_id":"612ce168052f70d73194ba8c","_id":"612ce2f367814edd02763076","__v":0}
+New Product has been created {"name":"android","description":"very bad phone","price":500,"amount_left":92,"category_id":"612ce26051ef30744a005633","users_id":"612ce168052f70d73194ba8c","_id":"612cecbb3390a513737bc2d2","__v":0}
+New Product has been created {"name":"iphone","description":"very cool phone","price":999.99,"amount_left":113,"category_id":"6130bb2c139064c0be3571d9","users_id":"6130b7bbe5f1dac5bcc9ead3","_id":"6130bcaf4881f72f5946551d","__v":0,"id":"6130bcaf4881f72f5946551d"}
+New Product has been created {"id":"6130bdc7fdfebc48419cfc1c","name":"android","description":"very bad phone","price":459,"amount_left":235,"category_id":"6130bb2c139064c0be3571d9","users_id":"6130b7bbe5f1dac5bcc9ead3"}
+Product with ID 6130bdc7fdfebc48419cfc1c has been changed {"price":59}
+Product with ID 6130bdc7fdfebc48419cfc1c has been changed {"price":0,"amount_left":0}
+Product with ID 6130bdc7fdfebc48419cfc1c has been deleted
+New Product has been created {"id":"6130c41c942e06baa4665604","name":"android","description":"very bad phone","price":0,"amount_left":0,"category_id":"6130bb2c139064c0be3571d9","users_id":"6130b7bbe5f1dac5bcc9ead3"}
+New Product has been created {"id":"6130c4ae942e06baa4665606","name":"androi","description":"very bad phone","price":0,"amount_left":0,"category_id":"6130bb2c139064c0be3571d9","users_id":"elander"}
