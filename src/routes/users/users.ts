@@ -1,10 +1,17 @@
 import { Router } from 'express';
 import userController from '../../container/Users';
+import { Prop } from '../../enums/enum.property';
+import validation from '../../middlewares/validation';
+import { paramID } from '../../schemes/schemaParamsId';
 
-const router = Router();
+const usersRouter = Router();
 
-router.get('/', userController.getAllUsers);
+usersRouter.get('/', userController.getAllUsers);
 
-router.get('/:id', userController.getUser);
+usersRouter.get(
+  '/:id',
+  validation(paramID, Prop.params),
+  userController.getUser
+);
 
-export default router;
+export default usersRouter;

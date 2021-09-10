@@ -1,12 +1,12 @@
 import { Model } from 'objection';
+import Category from './Category';
+import Users from './Users';
 
-export class Products extends Model {
+class Products extends Model {
   static get tableName() {
     return 'products';
   }
   static get relationMappings() {
-    const Category = require('./Category');
-    const Users = require('./Users');
     return {
       category: {
         relation: Model.HasOneRelation,
@@ -27,3 +27,5 @@ export class Products extends Model {
     };
   }
 }
+
+export default Products;

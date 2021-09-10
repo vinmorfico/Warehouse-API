@@ -1,5 +1,5 @@
 import { PartialModelObject } from 'objection';
-import { Users } from '../entities/Users';
+import Users from '../entities/Users';
 
 export class UserRepository {
   getUser(id: string) {

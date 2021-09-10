@@ -3,11 +3,7 @@
 ## Task
 
 ```
-You should add some functionality to your project and cover part of existing functionality with access checks to prevent unauthorized access on sensitive API routes.
-
-Core use cases to be implemented:
-User auth (login and obtain pair of JWT token and refresh token)
-Obtain new JWT token providing refresh token
+Now the time of TypeScript has come. You should rewrite your Express app to make it use TypeScript.
 ```
 
 ## Database Istallation
@@ -22,11 +18,13 @@ Obtain new JWT token providing refresh token
 1. npm i
 2. npm run migrate
 3. npm run seed
+4. npm run build
 
 ```
 
 ## Usage
 
 ```bash
-1. npm run dev # or npm run start
+1. npm run watch
+2. npm run dev # or npm run start
 ```

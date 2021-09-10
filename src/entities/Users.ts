@@ -1,11 +1,10 @@
 import { Model } from 'objection';
-
-export class Users extends Model {
+import Products from './Products';
+class Users extends Model {
   static get tableName() {
     return 'users';
   }
   static get relationMappings() {
-    const Products = require('./Products');
     return {
       products: {
         relation: Model.HasManyRelation,
@@ -18,3 +17,5 @@ export class Users extends Model {
     };
   }
 }
+
+export default Users;

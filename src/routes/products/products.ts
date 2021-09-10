@@ -1,16 +1,37 @@
 import { Router } from 'express';
 import productController from '../../container/Products';
+import { Prop } from '../../enums/enum.property';
+import validation from '../../middlewares/validation';
+import { paramID } from '../../schemes/schemaParamsId';
+import { productsPOST, productsPUT } from '../../schemes/schemaProducts';
 
-const router = Router();
+const productsRouter = Router();
 
-router.get('/', productController.getAllProducts);
+productsRouter.get('/', productController.getAllProducts);
 
-router.get('/:id', productController.getProductById);
+productsRouter.get(
+  '/:id',
+  validation(paramID, Prop.params),
+  productController.getProductById
+);
 
-router.post('/', productController.createNewProduct);
+productsRouter.post(
+  '/',
+  validation(productsPOST, Prop.body),
+  productController.createNewProduct
+);
 
-router.put('/:id', productController.updateProduct);
+productsRouter.put(
+  '/:id',
+  validation(paramID, Prop.params),
+  validation(productsPUT, Prop.body),
+  productController.updateProduct
+);
 
-router.delete('/:id', productController.deleteProduct);
+productsRouter.delete(
+  '/:id',
+  validation(paramID, Prop.params),
+  productController.deleteProduct
+);
 
-export default router;
+export default productsRouter;

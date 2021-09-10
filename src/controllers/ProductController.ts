@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import ProductService from '../services/ProductService';
-import { paramID } from '../routes/schemaParamsId';
+import { paramID } from '../schemes/schemaParamsId';
 import { productsPOST, productsPUT } from '../schemes/schemaProducts';
 
 class ProductController {

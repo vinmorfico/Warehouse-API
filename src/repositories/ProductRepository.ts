@@ -1,5 +1,5 @@
 import { PartialModelObject } from 'objection';
-import { Products } from '../entities/Products';
+import  Products  from '../entities/Products';
 import IProduct from '../interfaces/Product.interface';
 
 class ProductRepository {

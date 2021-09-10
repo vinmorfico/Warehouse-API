@@ -1,12 +1,27 @@
 import { Router } from 'express';
 import userController from '../../container/Users';
+import { Prop } from '../../enums/enum.property';
+import validation from '../../middlewares/validation';
+import { loginPOST, refreshPOST, registerPOST } from '../../schemes/schemaAuth';
 
-const router = Router();
+const authRouter = Router();
 
-router.post('/login', userController.login);
+authRouter.post(
+  '/login',
+  validation(loginPOST, Prop.body),
+  userController.login
+);
 
-router.post('/refresh', userController.refreshToken);
+authRouter.post(
+  '/refresh',
+  validation(refreshPOST, Prop.body),
+  userController.refreshToken
+);
 
-router.post('/register', userController.registerNewUser);
+authRouter.post(
+  '/register',
+  validation(registerPOST, Prop.body),
+  userController.registerNewUser
+);
 
-export default router;
+export default authRouter;

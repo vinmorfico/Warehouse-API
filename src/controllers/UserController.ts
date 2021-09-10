@@ -3,9 +3,9 @@ import * as dotenv from 'dotenv';
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { v4 } from 'uuid';
-import UserService from '../services/UserService';
-import { paramID } from '../routes/schemaParamsId';
+import { paramID } from '../schemes/schemaParamsId';
 import { loginPOST, refreshPOST, registerPOST } from '../schemes/schemaAuth';
+import UserService from '../services/UserService';
 dotenv.config();
 
 class UserController {
@@ -62,7 +62,9 @@ class UserController {
     if (isEmpty(dbToken)) {
       res.status(400).send('Invalid Token');
     }
-    const user: any = await this.userService.getUserByRefreshToken(refreshToken);
+    const user: any = await this.userService.getUserByRefreshToken(
+      refreshToken
+    );
     const newRefreshToken = v4();
     const token = jwt.sign(
       { login: user[0].login },
@@ -103,13 +105,14 @@ class UserController {
       expiresIn: '55m',
     });
 
-    const user = await this.userService.createNewUser(
+    const user: any = await this.userService.createNewUser(
       name,
       login,
       encryptedPassword,
       refreshToken
     );
-    res.status(201).json({ user });
+    user.token = token;
+    res.status(201).json(user);
   };
 }
 

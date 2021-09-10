@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { categoryPOST, categoryPUT } from '../schemes/schemaCategory';
-import { paramID } from '../routes/schemaParamsId';
+import { paramID } from '../schemes/schemaParamsId';
 import CategoryService from '../services/CategoryService';
 
 class CategoryController {

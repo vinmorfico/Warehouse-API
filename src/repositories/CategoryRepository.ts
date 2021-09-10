@@ -1,11 +1,11 @@
 import { PartialModelObject } from 'objection';
-import { Category } from '../entities/Category';
+import Category from '../entities/Category';
 import ICategory from '../interfaces/Category.interface';
 
 class CategoryRepository {
   createNewCategory(query: ICategory) {
     return Category.query().insert({
-      name: query,
+      name: query.name,
     } as PartialModelObject<Category>);
   }
 
@@ -23,7 +23,7 @@ class CategoryRepository {
 
   updateCategory(id: string, query: ICategory) {
     return Category.query().patchAndFetchById(id, {
-      name: query,
+      name: query.name,
     } as PartialModelObject<Category>);
   }
 }

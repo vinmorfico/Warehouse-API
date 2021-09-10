@@ -6,3 +6,5 @@ Product with ID 4 has been deleted
 Product with ID 2 has been deleted
 New Product has been created {"name":"string","description":"string","price":0,"amount_left":0,"category_id":1,"users_id":1,"id":13}
 New Product has been created {"name":"string","description":"string","price":0,"amount_left":0,"category_id":1,"users_id":1,"id":14}
+Product with ID 1 has been changed {"amount_left":500}
+New Product has been created {"name":"string","description":"string","price":0,"amount_left":0,"category_id":2,"users_id":2,"id":4}

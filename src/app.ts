@@ -1,13 +1,12 @@
+import * as dotenv from 'dotenv';
 import express from 'express';
-import { createServer } from 'http';
 import path from 'path';
 import swaggerUi from 'swagger-ui-express';
-import swaggerDocument from '../swagger';
+import swaggerDocument from '../swagger.json';
 import setupDb from './db/knex';
 import io from './io';
 import { errorHandler, newError } from './middlewares/error.middleware';
 import routes from './routes/index';
-import * as dotenv from 'dotenv';
 
 require('express-async-errors');
 dotenv.config();
@@ -15,7 +14,7 @@ dotenv.config();
 const PORT = process.env.PORT || 3000;
 const PATH_PUBLIC = path.join(__dirname, '/public');
 const app = express();
-const server = createServer();
+const server = require('http').Server(app);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

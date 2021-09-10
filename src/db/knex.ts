@@ -1,10 +1,10 @@
-import { knex } from 'knex';
 import { Model } from 'objection';
+import Knex from 'knex';
 import knexfile from '../../knexfile';
 
-function setupDb() {
-  const db = knex(knexfile);
-  Model.knex(db);
+async function setupDb() {
+  const knex = Knex(knexfile);
+  Model.knex(knex);
 }
 
 export default setupDb;
