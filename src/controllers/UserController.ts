@@ -3,9 +3,10 @@ import * as dotenv from 'dotenv';
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { v4 } from 'uuid';
-import { paramID } from '../schemes/schemaParamsId';
 import { loginPOST, refreshPOST, registerPOST } from '../schemes/schemaAuth';
+import { paramID } from '../schemes/schemaParamsId';
 import UserService from '../services/UserService';
+import { isEmpty, isNotEmpty } from '../utils';
 dotenv.config();
 
 class UserController {
@@ -53,12 +54,6 @@ class UserController {
     await refreshPOST.validateAsync(req.body);
     const { refreshToken } = req.body;
     const dbToken = await this.userService.findToken(refreshToken);
-    const isEmpty = function (obj: Object): boolean {
-      for (let _key in obj) {
-        return false;
-      }
-      return true;
-    };
     if (isEmpty(dbToken)) {
       res.status(400).send('Invalid Token');
     }
@@ -90,12 +85,6 @@ class UserController {
       res.status(400).send('All input is required');
     }
     const oldUser = await this.userService.getUserByLogin(login);
-    const isNotEmpty = function (obj: Object): boolean {
-      for (let _key in obj) {
-        return true;
-      }
-      return false;
-    };
     if (isNotEmpty(oldUser)) {
       return res.status(409).send('User Already Exist. Please Login');
     }

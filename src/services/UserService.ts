@@ -1,7 +1,7 @@
 import UserRepository from '../repositories/UserRepository';
 
 class UserService {
-  constructor(private readonly userRepo: UserRepository) {}
+  constructor(private readonly userRepo: UserRepository | any) {}
 
   getUser(id: string) {
     return this.userRepo.getUser(id);

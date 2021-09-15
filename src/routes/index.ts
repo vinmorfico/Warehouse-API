@@ -8,8 +8,8 @@ import usersRouter from './users/users';
 
 const routes = Router();
 
-routes.use('/users', auth, usersRouter);
-routes.use('/products', auth, productsRouter, info);
+routes.use('/users', usersRouter);
+routes.use('/products', productsRouter, info);
 routes.use('/category', auth, categoryRouter);
 routes.use('/auth', authRouter);
 

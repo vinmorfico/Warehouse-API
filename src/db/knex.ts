@@ -1,5 +1,5 @@
-import { Model } from 'objection';
 import Knex from 'knex';
+import { Model } from 'objection';
 import knexfile from '../../knexfile';
 
 async function setupDb() {

@@ -8,3 +8,70 @@ New Product has been created {"name":"string","description":"string","price":0,"
 New Product has been created {"name":"string","description":"string","price":0,"amount_left":0,"category_id":1,"users_id":1,"id":14}
 Product with ID 1 has been changed {"amount_left":500}
 New Product has been created {"name":"string","description":"string","price":0,"amount_left":0,"category_id":2,"users_id":2,"id":4}
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":4}
+Product with ID 2 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":5}
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":6}
+Product with ID 5 has been changed {}
+Product with ID 5 has been changed {"description":"bad","amount_left":459}
+Product with ID 6 has been changed {"description":"bad","amount_left":459}
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":4}
+Product with ID 4 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":5}
+Product with ID 4 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":4}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":5}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":6}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":7}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":8}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":9}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":10}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":11}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":12}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":13}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":14}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":15}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":16}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":17}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":18}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":19}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":4}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted
+New Product has been created {"name":"potato","description":"very good","price":7.99,"amount_left":356,"category_id":2,"users_id":1,"id":5}
+Product with ID 3 has been changed {"description":"bad","amount_left":459}
+Product with ID 4 has been deleted

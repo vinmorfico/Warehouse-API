@@ -25,7 +25,6 @@ const info = (req: Request, _res: Response, next: NextFunction) => {
         )}\n`,
         'utf8'
       );
-      console.log(`edit${entity}`);
       io.emit(`edit${entity}`, id, req.body);
       break;
     case 'DELETE':
