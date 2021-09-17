@@ -7,9 +7,11 @@ import { errorHandler, newError } from './middlewares/error.middleware';
 import routes from './routes/index';
 
 function createServer() {
+  (async () => {
+    await setupDb();
+  })();
   const app = express();
   app.set('port', process.env.PORT || 3000);
-  setupDb();
   const PATH_PUBLIC = path.join(__dirname, '/public');
 
   app.use(express.json());

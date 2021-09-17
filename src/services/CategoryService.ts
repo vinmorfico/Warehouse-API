@@ -2,7 +2,7 @@ import ICategory from '../interfaces/Category.interface';
 import CategoryRepository from '../repositories/CategoryRepository';
 
 class CategoryService {
-  constructor(private readonly categoryRepo: CategoryRepository | any) {}
+  constructor(private readonly categoryRepo: CategoryRepository) {}
 
   createNewCategory(query: ICategory) {
     return this.categoryRepo.createNewCategory(query);

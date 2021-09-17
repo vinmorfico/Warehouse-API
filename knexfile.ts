@@ -4,8 +4,8 @@ require('dotenv').config();
 const development = {
   client: 'pg',
   connection: {
-    host: process.env.POSTGRES_HOST || 'localhost',
-    port: process.env.POSTGRES_PORT || '5438',
+    host: process.env.POSTGRES_HOST || 'postgres',
+    port: process.env.POSTGRES_PORT || '5432',
     user: process.env.POSTGRES_USER || 'postgres',
     password: process.env.POSTGRES_PASSWORD || 'example',
     database: process.env.POSTGRES_DB || 'warehouse',
