@@ -1,11 +1,13 @@
 import supertest from 'supertest';
 import createServer from '../../src/server';
+import generateToken from '../helpers/auth-for-routes';
 
+const token = generateToken();
 const app = createServer();
 
 describe('GET /users - get all users', () => {
   it('should return all users', async () => {
-    const res = await supertest(app).get('/api/users');
+    const res = await supertest(app).get('/api/users').set('authorization', token);;
     expect(res.statusCode).toEqual(200);
     expect(Array.isArray(res.body)).toBeTruthy();
     expect(res.body[0].hasOwnProperty('id')).toBeTruthy();
@@ -20,7 +22,7 @@ describe('GET /users - get all users', () => {
 describe('GET /users/:id - get users by id', () => {
   it('should return  user', async () => {
     const id = 2;
-    const res = await supertest(app).get('/api/users/' + id);
+    const res = await supertest(app).get('/api/users/' + id).set('authorization', token);;
     expect(res.statusCode).toEqual(200);
     expect(typeof res.body === 'object').toBeTruthy();
     expect(res.body.hasOwnProperty('id')).toBeTruthy();

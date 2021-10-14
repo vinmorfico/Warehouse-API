@@ -1,6 +1,8 @@
 import supertest from 'supertest';
 import createServer from '../../src/server';
+import generateToken from '../helpers/auth-for-routes';
 
+const token = generateToken();
 const app = createServer();
 
 describe('POST /products - create new product', () => {
@@ -41,7 +43,7 @@ describe('PUT /products/:id - update product by id', () => {
       amount_left: 459,
     };
     const res = await supertest(app)
-      .put('/api/products/' + id)
+      .put('/api/products/' + id).set('authorization', token)
       .send(put);
     expect(res.statusCode).toEqual(200);
     expect(typeof res.body === 'object').toBeTruthy();
@@ -60,7 +62,7 @@ describe('PUT /products/:id - update product by id', () => {
 describe('DELETE /products/:id - delete product by id', () => {
   it('should return message "deleted"', async () => {
     const id = 4;
-    const res = await supertest(app).delete('/api/products/' + id);
+    const res = await supertest(app).delete('/api/products/' + id).set('authorization', token);
     expect(res.statusCode).toEqual(200);
     expect(res.body.status).toBe('deleted');
   });
